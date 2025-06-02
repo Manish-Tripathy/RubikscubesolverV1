@@ -8,4 +8,21 @@ add_executable(RubikscubesolverV1 main.cpp
         Models/GenericRubiksCube.h
         Models/Rubikscube3d.cpp
         Models/RubiksCube1D.cpp
+        Solvers/DFS_solver.cpp
+        Solvers/BFS_solver.cpp
+        Solvers/IDDFS_solver.cpp
+        Solvers/IDAStar_Solver.cpp
+        Pattern_DB/Nibble_array.cpp
+        Pattern_DB/Nibble_array.h
+        Pattern_DB/Pattern_Database.cpp
+        Pattern_DB/Pattern_Database.h
+        Pattern_DB/math.cpp
+        Pattern_DB/math.h
+        Pattern_DB/Permut_indexer.h
+        Pattern_DB/Corner_pattern_DB.cpp
+        Pattern_DB/Corner_pattern_DB.h
+        Models/Patter_DB_0/pattern_DB_0.h
+        Pattern_DB/Corner_DB_Maker.cpp
+        Pattern_DB/Corner_DB_Maker.h
+        Models/RubiksCubeBitboard.cpp
 )

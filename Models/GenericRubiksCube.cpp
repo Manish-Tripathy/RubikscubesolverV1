@@ -19,7 +19,7 @@ char RubiksCube::getColorLetter(COLOR color) {
         case COLOR::WHITE:
             return 'W';
         case COLOR::ORANGE:
-            return 'O';
+              return 'O';
     }
 
     throw std::invalid_argument("Invalid COLOR for getColorLetter()");
