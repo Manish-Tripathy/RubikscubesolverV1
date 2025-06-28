@@ -21,8 +21,13 @@ add_executable(RubikscubesolverV1 main.cpp
         Pattern_DB/Permut_indexer.h
         Pattern_DB/Corner_pattern_DB.cpp
         Pattern_DB/Corner_pattern_DB.h
-        Models/Patter_DB_0/pattern_DB_0.h
+        Models/Init0/Init0.h
         Pattern_DB/Corner_DB_Maker.cpp
         Pattern_DB/Corner_DB_Maker.h
         Models/RubiksCubeBitboard.cpp
+        Pattern_DB/Edge_DB_Maker.cpp
+        Pattern_DB/Edge_DB_Maker.h
+        Pattern_DB/Edge_pattern_DB.cpp
+        Pattern_DB/Edge_pattern_DB.h
+        Solvers/IDAStar_Edge_Solver.cpp
 )

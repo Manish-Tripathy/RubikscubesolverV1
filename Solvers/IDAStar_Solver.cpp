@@ -24,7 +24,7 @@ private:
 
         Node(T _cube, int _depth, int _estimate) : cube(_cube), depth(_depth), estimate(_estimate) {};
     };
-
+//check
     struct compareCube {
         bool operator()(pair<Node, int> const &p1, pair<Node, int> const &p2) {
             auto n1 = p1.first, n2 = p2.first;

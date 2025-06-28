@@ -7,7 +7,7 @@
 
 
 #include "Corner_pattern_DB.h"
-#include "../Models/RubiksCubeBitboard.cpp"
+#include "../Models/RubiksCube1d.cpp"
 
 using namespace std;
 

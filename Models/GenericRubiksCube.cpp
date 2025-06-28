@@ -325,3 +325,128 @@ uint8_t RubiksCube::getCornerOrientation(uint8_t ind) const {
         return 2;
     } else return 0;
 }
+
+
+string RubiksCube::getEdgeColorString(uint8_t ind) const {
+    string str = "";
+
+    switch (ind) {
+        case 0:  // UF
+            str += getColorLetter(getColor(FACE::UP, 2, 1));
+            str += getColorLetter(getColor(FACE::FRONT, 0, 1));
+            break;
+        case 1:  // UR
+            str += getColorLetter(getColor(FACE::UP, 1, 2));
+            str += getColorLetter(getColor(FACE::RIGHT, 0, 1));
+            break;
+        case 2:  // UB
+            str += getColorLetter(getColor(FACE::UP, 0, 1));
+            str += getColorLetter(getColor(FACE::BACK, 0, 1));
+            break;
+        case 3:  // UL
+            str += getColorLetter(getColor(FACE::UP, 1, 0));
+            str += getColorLetter(getColor(FACE::LEFT, 0, 1));
+            break;
+        case 4:  // DF
+            str += getColorLetter(getColor(FACE::DOWN, 0, 1));
+            str += getColorLetter(getColor(FACE::FRONT, 2, 1));
+            break;
+        case 5:  // DR
+            str += getColorLetter(getColor(FACE::DOWN, 1, 2));
+            str += getColorLetter(getColor(FACE::RIGHT, 2, 1));
+            break;
+        case 6: // DB
+            str += getColorLetter(getColor(FACE::DOWN, 2, 1));
+            str += getColorLetter(getColor(FACE::BACK, 2, 1));
+            break;
+        case 7: // DL
+            str += getColorLetter(getColor(FACE::DOWN, 1, 0));
+            str += getColorLetter(getColor(FACE::LEFT, 2, 1));
+            break;
+        case 8:  // FR
+            str += getColorLetter(getColor(FACE::FRONT, 1, 2));
+            str += getColorLetter(getColor(FACE::RIGHT, 1, 0));
+            break;
+        case 9:  // FL
+            str += getColorLetter(getColor(FACE::FRONT, 1, 0));
+            str += getColorLetter(getColor(FACE::LEFT, 1, 2));
+            break;
+        case 10:  // BL
+            str += getColorLetter(getColor(FACE::BACK, 1, 2)); // mistake was 1 0 i guess
+            str += getColorLetter(getColor(FACE::LEFT, 1, 0));
+            break;
+        case 11:  // BR
+            str += getColorLetter(getColor(FACE::BACK, 1, 0));
+            str += getColorLetter(getColor(FACE::RIGHT, 1, 2));
+            break;
+    }
+    return str;
+}
+
+
+
+uint8_t RubiksCube::getEdgeIndex(uint8_t ind) const {
+    string edge = getEdgeColorString(ind);
+
+    static const vector<string> edgeSignatures = {
+        "WR", "WB", "WO", "WG", // UF UR UB UL
+        "YR", "YB", "YO" // DF DR DB
+    };
+
+    string s = edge;
+    sort(s.begin(), s.end());
+
+    for (uint8_t i = 0; i < 12; ++i) {
+        string t = edgeSignatures[i];
+        sort(t.begin(), t.end());
+
+        if (s == t) {
+             // cout<<s<<" "<<t<<endl;
+            return i;
+        }
+    }
+
+    // throw std::runtime_error("Invalid edge colors");
+    return 8;
+}
+
+
+uint8_t RubiksCube::getEdgeOrientation(uint8_t ind) const {
+    string edge = getEdgeColorString(ind);
+    if (edge[0]!='W' && edge[1]!='W') {
+        if (edge[0]!='Y' && edge[1]!='Y')return -1;
+    }
+    static const vector<string> edgeSignatures = {
+        "WR", "WB", "WO", "WG", // UF UR UB UL
+        "YR", "YB", "YO" // DF DR DB
+    };
+
+    if (edge[0]=='W' || edge[0]=='Y')return 0;
+    return 1;
+}
+
+
+uint8_t RubiksCube::getEdgeIndex(uint8_t ind) const {
+    string edge = getEdgeColorString(ind);
+
+    static const vector<string> edgeSignatures = {
+        "WR", "WB", "WO", "WG", // UF UR UB UL
+        "YR", "YB", "YO" // DF DR DB
+    };
+
+    string s = edge;
+    sort(s.begin(), s.end());
+
+    for (uint8_t i = 0; i < 12; ++i) {
+        string t = edgeSignatures[i];
+        sort(t.begin(), t.end());
+
+        if (s == t) {
+            // cout<<s<<" "<<t<<endl;
+            return i;
+        }
+    }
+
+    // throw std::runtime_error("Invalid edge colors");
+    return 8;
+}

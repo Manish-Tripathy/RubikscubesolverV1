@@ -102,12 +102,24 @@ public:
     virtual RubiksCube &bPrime() = 0;
 
     virtual RubiksCube &b2() = 0;
-
+    //for corner based DB
     string getCornerColorString(uint8_t ind) const;
 
     uint8_t getCornerIndex(uint8_t ind) const;
 
     uint8_t getCornerOrientation(uint8_t ind) const;
+
+    //for edge base DB
+    string getEdgeColorString(uint8_t ind) const;
+
+    uint8_t getEdgeOrientation(uint8_t ind) const;
+
+    uint8_t getEdgeIndex(uint8_t ind) const;
+
+    //for solvability checker
+    uint8_t getEdgeIndextot(uint8_t ind) const;
+
+    uint8_t getEdgeOrientationtot(uint8_t ind) const;
 };
 
 #endif //GENERICRUBIKSCUBE_H

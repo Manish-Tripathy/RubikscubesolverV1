@@ -16,17 +16,17 @@ CornerDBMaker::CornerDBMaker(string _fileName, uint8_t init_val) {
 }
 
 bool CornerDBMaker::bfsAndStore() {
-    RubiksCubeBitboard cube;
-    queue<RubiksCubeBitboard> q;
+    RubiksCube1d cube;
+    queue<RubiksCube1d> q;
     q.push(cube);
     cornerDB.setNumMoves(cube, 0);
     int curr_depth = 0;
     while (!q.empty()) {
         int n = q.size();
         curr_depth++;
-        if (curr_depth == 9) break;
+        if (curr_depth == 7) break;
         for (int counter = 0; counter < n; counter++) {
-            RubiksCubeBitboard node = q.front();
+            RubiksCube1d node = q.front();
             q.pop();
             for (int i = 0; i < 18; i++) {
                 auto curr_move = RubiksCube::MOVE(i);
@@ -41,5 +41,10 @@ bool CornerDBMaker::bfsAndStore() {
     }
 
     cornerDB.toFile(fileName);
+    // bool success = cornerDB.toFile(fileName);
+    // if (!success) {
+    cout<<"completed"<< endl;
+    // }
+
     return true;
 }
